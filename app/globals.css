@@ -27,11 +27,28 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer base{
-  nav{
+@layer base {
+  nav {
     @apply w-full h-15 flex items-center space-x-8 justify-between
     p-10 transition-colors duration-300
-    dark:bg-surface-a10 dark:text-primary-a0 ;
+    dark:bg-surface-a10 dark:text-primary-a0;
+  }
+
+  form {
+    @apply flex flex-col space-y-5;
+  }
+
+  input {
+    @apply h-10 rounded focus:outline-2 focus:outline-primary-a20
+
+    dark:outline-1 dark:outline-surface-a40
+    dark:bg-gray-50
+    p-2;
+  }
+
+  button {
+    @apply text-dark-a0
+    rounded p-2 w-full;
   }
 }
 
@@ -41,13 +58,12 @@ body {
   }
 } */
 
-
-@theme{
+@theme {
   /** Base colors */
   --color-dark-a0: #000000;
   --color-light-a0: #ffffff;
 
-  /** Theme primary colors */
+  /** Theme dark primary colors */
   --color-primary-a0: #4751de;
   --color-primary-a10: #6363e2;
   --color-primary-a20: #7b75e7;
@@ -55,13 +71,30 @@ body {
   --color-primary-a40: #a49aef;
   --color-primary-a50: #b7aef2;
 
-  /** Theme surface colors */
+  /** Theme dark surface colors */
   --color-surface-a0: #141414;
   --color-surface-a10: #292929;
   --color-surface-a20: #404040;
   --color-surface-a30: #585858;
   --color-surface-a40: #727272;
   --color-surface-a50: #8c8c8c;
+  --color-surface-a60: #bfbfbf;
+
+  /** Theme light primary colors */
+  --color-light-primary-a0: #4751de;
+  --color-light-primary-a10: #6363e2;
+  --color-light-primary-a20: #7b75e7;
+  --color-light-primary-a30: #9087eb;
+  --color-light-primary-a40: #a49aef;
+  --color-light-primary-a50: #b7aef2;
+
+  /** Theme light surface colors */
+  --color-light-surface-a0: #141414;
+  --color-light-surface-a10: #292929;
+  --color-light-surface-a20: #404040;
+  --color-light-surface-a30: #585858;
+  --color-light-surface-a40: #727272;
+  --color-light-surface-a50: #8c8c8c;
 
   /** Theme tonal surface colors */
   /* --color-surface-tonal-a0: #1b1a25;
@@ -70,5 +103,4 @@ body {
   --color-surface-tonal-a30: #5e5d66;
   --color-surface-tonal-a40: #77767e;
   --color-surface-tonal-a50: #919096; */
-
 }

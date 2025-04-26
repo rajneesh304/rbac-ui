@@ -1,0 +1,74 @@
+@import "tailwindcss";
+/* added custom variant as part of light-dark toggle */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base{
+  nav{
+    @apply w-full h-15 flex items-center space-x-8 justify-between
+    p-10 transition-colors duration-300
+    dark:bg-surface-a10 dark:text-primary-a0 ;
+  }
+}
+
+/* @layer components {
+  .card{
+    @apply rounded-lg bg-white px-6 py-8 shadow-xl ring-1 ring-slate-900/5 dark:bg-black;
+  }
+} */
+
+
+@theme{
+  /** Base colors */
+  --color-dark-a0: #000000;
+  --color-light-a0: #ffffff;
+
+  /** Theme primary colors */
+  --color-primary-a0: #4751de;
+  --color-primary-a10: #6363e2;
+  --color-primary-a20: #7b75e7;
+  --color-primary-a30: #9087eb;
+  --color-primary-a40: #a49aef;
+  --color-primary-a50: #b7aef2;
+
+  /** Theme surface colors */
+  --color-surface-a0: #141414;
+  --color-surface-a10: #292929;
+  --color-surface-a20: #404040;
+  --color-surface-a30: #585858;
+  --color-surface-a40: #727272;
+  --color-surface-a50: #8c8c8c;
+
+  /** Theme tonal surface colors */
+  /* --color-surface-tonal-a0: #1b1a25;
+  --color-surface-tonal-a10: #302f39;
+  --color-surface-tonal-a20: #46454f;
+  --color-surface-tonal-a30: #5e5d66;
+  --color-surface-tonal-a40: #77767e;
+  --color-surface-tonal-a50: #919096; */
+
+}

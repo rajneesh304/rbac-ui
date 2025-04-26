@@ -25,15 +25,24 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+#__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 @layer base {
-  nav {
-    @apply w-full h-15 flex items-center space-x-8 justify-between
-    p-10 transition-colors duration-300
-    dark:bg-surface-a10 dark:text-primary-a0;
-  }
-
   form {
     @apply flex flex-col space-y-5;
   }
@@ -41,7 +50,7 @@ body {
   input {
     @apply h-10 rounded focus:outline-2 focus:outline-primary-a20
 
-    dark:outline-1 dark:outline-surface-a40
+     dark:outline-surface-a40
     dark:bg-gray-50
     p-2;
   }

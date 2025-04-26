@@ -5,20 +5,38 @@ import React, { useState } from "react";
 const page = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [verifypass, setVerifypass] = useState("");
+  const [email, setEmail] = useState("");
 
   const usernameHandler = (event) => {
     setUsername(event.target.value);
   };
 
+  const emailHandler = (event) => {
+    setEmail(event.target.value);
+  };
+
   const cancelHandler = (event) => {
     setUsername("");
     setPassword("");
+    setVerifypass("");
+    setEmail("");
     document.getElementById("loginError").style.display = "none";
   };
 
   const passwordHandler = (event) => {
     setPassword(event.target.value);
   };
+  const verifypassHandler = (event) => {
+    setVerifypass(event.target.value);
+    if (password !== event.target.value) {
+      document.getElementById("loginError").style.display = "none";
+      document.getElementById("passwordMatchError").style.display = "block";
+    } else {
+      document.getElementById("passwordMatchError").style.display = "none";
+    }
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
     document.getElementById("loginError").style.display = "block";
@@ -29,11 +47,11 @@ const page = () => {
       className="flex 
       px-[10%]
       md:px-[20%]
-      py-20
       justify-evenly 
-    dark:bg-surface-a10
       md:flex-col
       lg:flex-row
+      py-20
+
     "
     >
       <div className="p-10 flex-6 text-primary-a0 hidden md:flex">
@@ -42,6 +60,15 @@ const page = () => {
       <div className="flex flex-col space-y-5 flex-6 rounded-2xl shadow-2xl p-10 dark:bg-surface-a60">
         <form method="POST">
           <input
+            name="email"
+            id="email"
+            type="text"
+            placeholder="email"
+            value={email}
+            onChange={emailHandler}
+          />
+
+          <input
             name="username"
             id="username"
             type="text"
@@ -49,6 +76,7 @@ const page = () => {
             value={username}
             onChange={usernameHandler}
           />
+
           <input
             name="password"
             id="password"
@@ -57,8 +85,20 @@ const page = () => {
             value={password}
             onChange={passwordHandler}
           />
+          <input
+            name="verifypass"
+            id="verifypass"
+            type="password"
+            placeholder="verify password"
+            value={verifypass}
+            onChange={verifypassHandler}
+          />
+
           <div className="hidden text-red-700" id="loginError">
-            Username or password is incorrect!
+            Please verify all fields!
+          </div>
+          <div className="hidden text-red-700" id="passwordMatchError">
+            Password and verify password do not match!
           </div>
           <div className="w-full flex justify-between space-x-5 flex-col space-y-5 sm:flex-row sm:space-y-0">
             <button
@@ -77,8 +117,8 @@ const page = () => {
             </button>
           </div>
         </form>
-        <div className="flex items-center justify-center">
-          Don't have an account? Sign Up!
+        <div className="items-center justify-center">
+          Already have an account? <Link href="/login"> Log in!</Link>
         </div>
       </div>
     </div>
